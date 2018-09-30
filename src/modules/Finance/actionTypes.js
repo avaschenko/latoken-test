@@ -1,7 +1,10 @@
 export const name = 'finance';
 
-export const DELETE_RECORD = `${name}/delete_record`;
-export const ADD_RECORD = `${name}/add_record`;
+export const DELETE_RECORD = `${name}/delete_record_success`;
+export const DELETE_RECORD_START = `${name}/delete_record_start`;
+
+export const ADD_RECORD = `${name}/add_record_success`;
+export const ADD_RECORD_START = `${name}/add_record_start`;
 
 export const FETCH_FINANCES_START = `${name}/fetch_finances_start`;
 export const FETCH_FINANCES_SUCCESS = `${name}/fetch_finances_success`;

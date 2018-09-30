@@ -1,4 +1,3 @@
-import { converter, normalizeNumber } from 'modules/utils';
 import {createSelector} from "reselect"
 
 const getEntities = state => state.entities;
@@ -12,6 +11,7 @@ const getCurrenciesData = state => state.currency.entities;
 export const getActiveCurrency = state => state.activeCurrency;
 export const getBalances = state => state.balances;
 
+const getLoading = state => state.isLoading;
 
 export const records = createSelector(
   getEntities,
@@ -63,6 +63,11 @@ export const calculateBalance = createSelector(
 
 export const total = createSelector(
   calculateBalance,
+  val => val,
+)
+
+export const loading = createSelector(
+  getLoading,
   val => val,
 )
 

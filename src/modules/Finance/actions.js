@@ -2,8 +2,10 @@ import * as types from './actionTypes';
 import db from 'src/firebase';
 
 export const deleteRecord = ({ id }) => dispatch => {
+  dispatch({
+    type: types.DELETE_RECORD_START,
+  })
   const rootRef = db.ref().child('finances');
-  console.log(id);
   rootRef.child(id).remove().then(() => dispatch({
     type: types.DELETE_RECORD,
     payload: { id },
@@ -11,6 +13,9 @@ export const deleteRecord = ({ id }) => dispatch => {
 }
 
 export const addRecord = (data) => dispatch => {
+  dispatch({
+    type: types.ADD_RECORD_START,
+  })
   const rootRef = db.ref().child('finances');
   let item = rootRef.push();
   let id = item.key;

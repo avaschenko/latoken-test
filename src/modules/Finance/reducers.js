@@ -1,9 +1,10 @@
 import { createReducer } from 'modules/utils';
 import * as types from './actionTypes';
-import { converter, compose } from "modules/utils";
+import { converter } from "modules/utils";
 
 export const defaultState = {
   result: [],
+  isLoading: false,
   entities: {},
   ratio: 1.114,
   balances: {},
@@ -51,7 +52,8 @@ const removeRecord = (state, action) => {
     },
     balances: {
       ...state.balances,
-    }
+    },
+    isLoading: false,
   });
 }
 
@@ -75,7 +77,8 @@ const addRecord = (state, action) => {
     balances: {
       ...state.balances,
       ...balances,
-    }
+    },
+    isLoading: false,
   })
 }
 
@@ -93,6 +96,7 @@ const fetchFinancesSuccess = (state, action) => {
     entities,
     result: ids,
     balances,
+    isLoading: false,
   })
 }
 
@@ -119,10 +123,19 @@ const setRatio = (state, action) => {
   })
 }
 
+const fetchStart = (state) => {
+  return Object.assign({}, state, {
+    isLoading: true,
+  })
+}
+
 export default createReducer(defaultState, {
   [types.DELETE_RECORD]: removeRecord,
   [types.ADD_RECORD]: addRecord,
   [types.FETCH_FINANCES_SUCCESS]: fetchFinancesSuccess,
   [types.SET_CURRENCY]: setCurrency,
   [types.SET_RATIO]: setRatio,
+  [types.FETCH_FINANCES_START]: fetchStart,
+  [types.ADD_RECORD_START]: fetchStart,
+  [types.DELETE_RECORD_START]: fetchStart,
 })

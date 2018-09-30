@@ -5,7 +5,7 @@ const Option = Select.Option;
 
 class PSelect extends Component {
 
-  shouldComponentUpdate(nextProps, nextState) {
+  shouldComponentUpdate(nextProps) {
     const {value} = nextProps;
     return value !== this.props.value;
   }

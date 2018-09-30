@@ -74,7 +74,9 @@ class F extends Component {
           {errors.description}
         </div>
         <Button
-          disabled={values.amount.length === 0 || values.description.length === 0}
+          loading={this.props.isLoading}
+          disabled={values.amount.length === 0 || values.description.length === 0
+          }
           onClick={this.handleSubmit}
           type="submit"
         >
@@ -109,6 +111,7 @@ CreateForm.defaultProps = {
 const mapStateToProps = state => {
   return {
     currencies: selectors.currenciesList(state[types.name]),
+    isLoading: selectors.loading(state[types.name]),
   }
 }
 

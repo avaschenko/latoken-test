@@ -6,7 +6,6 @@ import cx from 'classnames';
 import s from './Toolbar.css';
 import { connect } from 'react-redux';
 import * as selectors from "../../selectors"
-import {createSelector} from "reselect";
 import { ratioRegexp } from "modules/constants"
 import * as types from '../../actionTypes';
 import * as actions from '../../actions';
@@ -16,10 +15,12 @@ class Toolbar extends PureComponent {
     super();
     this.timerId = null;
     this.state = {
-      ratio: '1.114'
+      ratio: '1.114',
+      currency: 'usd',
     }
   }
   handleChangeCurrency = id => this.props.setCurrency(id);
+
   handleChangeRatio = (ev) => {
     clearTimeout(this.timerId);
     const {value} = ev.target;

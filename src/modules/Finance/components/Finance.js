@@ -10,13 +10,11 @@ import s from './Finance.css';
 class Finance extends PureComponent {
 
   handleSubmit = (values) => {
-    for(let i = 0; i < 300; i ++) {
-      this.props.add({
-        ...values,
-        type: values.type.toLowerCase(),
-        date: Date.now(),
-      })
-    }
+    this.props.add({
+      ...values,
+      type: values.type.toLowerCase(),
+      date: Date.now(),
+    })
   };
 
   render() {

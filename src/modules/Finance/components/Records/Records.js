@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
+import { Spin } from 'antd';
 import * as selectors from '../../selectors';
 import * as types from '../../actionTypes';
 import * as actions from '../../actions';
@@ -14,6 +15,7 @@ class Records extends PureComponent {
   }
 
   render() {
+    if(this.props.isLoading) return <div className={s.loader}><Spin size="large"/></div>
     return (
       <div>
         {this.props.records.ids.length === 0 ? (
@@ -25,9 +27,9 @@ class Records extends PureComponent {
             <table className={s.table}>
               <colgroup>
                 <col width="5%"/>
-                <col width="60%"/>
-                <col width="15%"/>
-                <col width="15%"/>
+                <col width="50%"/>
+                <col width="20%"/>
+                <col width="20%"/>
                 <col width="5%"/>
               </colgroup>
               <List
@@ -59,6 +61,7 @@ class Records extends PureComponent {
 
 const mapStateToProps = state => ({
   records: selectors.records(state[types.name]),
+  isLoading: selectors.loading(state[types.name]),
 })
 
 export default connect(
