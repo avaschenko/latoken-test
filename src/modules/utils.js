@@ -5,7 +5,7 @@ export const createReducer = (initialState, handlers) => function reducer(state 
   return state;
 };
 
-export const roundNumber = (num, symbolsCount = 2) => +num.toFixed(symbolsCount)
+export const roundNumber = (num, symbolsCount = 10) => +num.toFixed(symbolsCount)
 
 export const converter = (num, code, ratio) => {
   switch(code) {
@@ -16,30 +16,6 @@ export const converter = (num, code, ratio) => {
     default:
       return +num;
   }
-}
-
-export const normalizeNumber = (str) => {
-  str = str + '';
-  let parts = (str + '').split('.'),
-    main = parts[0],
-    len = main.length,
-    output = '',
-    i = len - 1;
-
-  while (i >= 0) {
-    output = main.charAt(i) + output;
-    if ((len - i) % 3 === 0 && i > 0) {
-      output = ' ' + output;
-    }
-    --i;
-  }
-
-  if (parts.length > 1) {
-    output += '.' + parts[1];
-  } else {
-    output += '.00';
-  }
-  return output;
 }
 
 export const dateConverter = (mills, local = 'ru', config = {
@@ -53,3 +29,9 @@ export const dateConverter = (mills, local = 'ru', config = {
   const date = new Date(mills);
   return date.toLocaleString(local, config);
 }
+
+export const truncated = (num, decimalPlaces) => {
+  let numPowerConverter = Math.pow(10, decimalPlaces);
+  return ~~(num * numPowerConverter) / numPowerConverter;
+}
+

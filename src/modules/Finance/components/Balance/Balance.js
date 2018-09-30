@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import cx from 'classnames';
 import s from './Balance.css';
 import * as selectors from "../../selectors"
-import { normalizeNumber, roundNumber } from "modules/utils";
+import { truncated } from "modules/utils";
 import * as types from '../../actionTypes';
 
 class Balance extends PureComponent {
@@ -33,7 +33,7 @@ const mapStateToProps = state => {
   const amount = selectors.total(state[types.name]);
   return {
     isNegative: amount < 0,
-    amount: normalizeNumber(roundNumber(amount < 0 ? amount * -1 : amount)),
+    amount: truncated(amount < 0 ? amount * -1 : amount, 2),
     label: selectors.getActiveCurrencyLabel(state[types.name]),
   }
 }

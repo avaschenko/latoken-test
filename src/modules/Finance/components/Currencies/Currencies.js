@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import s from './Currencies.css';
-import { normalizeNumber } from 'modules/utils';
+import { truncated } from 'modules/utils';
 
 class Currencies extends Component {
 
@@ -23,7 +23,6 @@ class Currencies extends Component {
 
   render() {
     const { currenciesList, currentCurrency } = this.props;
-
     return (
       <div>
         {this.props.isEmpty ? '--' : (
@@ -33,9 +32,9 @@ class Currencies extends Component {
                 if(a.id === currentCurrency) return -1;
                 return 1;
               })
-              .map(item => (
-              <div key={`${item.id}-value`} className={s.currency}>
-                {item.label} {normalizeNumber(item.amount)}
+              .map((item, index) => (
+              <div key={`${item.id}-value-${index}`} className={s.currency}>
+                {item.label} {truncated(+item.amount, 2)}
               </div>
             ))}
           </div>

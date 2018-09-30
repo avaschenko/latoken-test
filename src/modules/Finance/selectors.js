@@ -55,9 +55,9 @@ export const calculateBalance = createSelector(
   balances,
   activeCurrency,
   (entity, source, code) => Object.keys(source).reduce((acc, key) => {
-    console.log(entity[key]);
     let amount = source[key].filter(item => item.id === code)[0].amount;
-    return entity[key].type === 'income' ? +acc + +amount : acc - amount;
+    let val = entity[key].type === 'income' ? +acc + +amount : acc - amount;
+    return val;
   }, 0)
 )
 

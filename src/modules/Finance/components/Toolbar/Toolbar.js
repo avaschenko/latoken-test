@@ -19,7 +19,9 @@ class Toolbar extends PureComponent {
       currency: 'usd',
     }
   }
-  handleChangeCurrency = id => this.props.setCurrency(id);
+  handleChangeCurrency = id => {
+    this.props.setCurrency(id);
+  };
 
   handleChangeRatio = (ev) => {
     clearTimeout(this.timerId);

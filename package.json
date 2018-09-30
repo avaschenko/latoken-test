@@ -39,6 +39,7 @@
     "promise": "8.0.1",
     "raf": "3.4.0",
     "react": "^16.5.2",
+    "react-addons-perf": "^15.4.2",
     "react-app-rewired": "^1.6.2",
     "react-bootstrap": "^0.32.4",
     "react-dev-utils": "^5.0.2",
@@ -62,7 +63,7 @@
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -b master -d build"
+    "deploy": "gh-pages -b gh-pages -d build"
   },
   "devDependencies": {
     "firebase": "^5.5.1"
