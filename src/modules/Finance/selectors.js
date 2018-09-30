@@ -11,7 +11,7 @@ const getCurrenciesData = state => state.currency.entities;
 export const getActiveCurrency = state => state.activeCurrency;
 export const getBalances = state => state.balances;
 
-const getLoading = state => state.isLoading;
+const getLoading = state => state.loadings;
 
 export const records = createSelector(
   getEntities,
@@ -68,7 +68,12 @@ export const total = createSelector(
 
 export const loading = createSelector(
   getLoading,
-  val => val,
+  source => source.list,
+)
+
+export const formLoading = createSelector(
+  getLoading,
+  source => source.form,
 )
 
 

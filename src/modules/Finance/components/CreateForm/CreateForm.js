@@ -111,7 +111,7 @@ CreateForm.defaultProps = {
 const mapStateToProps = state => {
   return {
     currencies: selectors.currenciesList(state[types.name]),
-    isLoading: selectors.loading(state[types.name]),
+    isLoading: selectors.formLoading(state[types.name]),
   }
 }
 

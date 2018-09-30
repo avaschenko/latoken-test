@@ -4,7 +4,10 @@ import { converter } from "modules/utils";
 
 export const defaultState = {
   result: [],
-  isLoading: false,
+  loadings: {
+    list: false,
+    form: false,
+  },
   entities: {},
   ratio: 1.114,
   balances: {},
@@ -53,7 +56,10 @@ const removeRecord = (state, action) => {
     balances: {
       ...state.balances,
     },
-    isLoading: false,
+    loadings: {
+      ...state.loadings,
+      list: false,
+    }
   });
 }
 
@@ -78,7 +84,10 @@ const addRecord = (state, action) => {
       ...state.balances,
       ...balances,
     },
-    isLoading: false,
+    loadings: {
+      list: false,
+      form: false,
+    }
   })
 }
 
@@ -96,7 +105,10 @@ const fetchFinancesSuccess = (state, action) => {
     entities,
     result: ids,
     balances,
-    isLoading: false,
+    loadings: {
+      ...state.loadings,
+      list: false,
+    }
   })
 }
 
@@ -125,9 +137,19 @@ const setRatio = (state, action) => {
 
 const fetchStart = (state) => {
   return Object.assign({}, state, {
-    isLoading: true,
+    loadings: {
+      ...state.loadings,
+      list: true,
+    }
   })
 }
+
+const addingStart = state => Object.assign({}, state, {
+  loadings: {
+    form: true,
+    list: true,
+  }
+})
 
 export default createReducer(defaultState, {
   [types.DELETE_RECORD]: removeRecord,
@@ -136,6 +158,6 @@ export default createReducer(defaultState, {
   [types.SET_CURRENCY]: setCurrency,
   [types.SET_RATIO]: setRatio,
   [types.FETCH_FINANCES_START]: fetchStart,
-  [types.ADD_RECORD_START]: fetchStart,
+  [types.ADD_RECORD_START]: addingStart,
   [types.DELETE_RECORD_START]: fetchStart,
 })
