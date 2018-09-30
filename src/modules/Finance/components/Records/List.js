@@ -7,6 +7,7 @@ import s from './Records.css';
 import * as selectors from '../../selectors';
 import * as types from '../../actionTypes';
 import * as actions from '../../actions';
+import {dateConverter } from 'modules/utils';
 
 class List extends PureComponent {
   handleRemove = (id) => () => this.props.remove({ id });
@@ -31,7 +32,7 @@ class List extends PureComponent {
           >
             <OperationInfo
               description={source[id].description}
-              date={source[id].date}
+              date={dateConverter(source[id].date)}
             />
           </td>
           <td

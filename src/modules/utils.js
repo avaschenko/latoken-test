@@ -40,5 +40,16 @@ export const normalizeNumber = (str) => {
     output += '.00';
   }
   return output;
+}
 
+export const dateConverter = (mills, local = 'ru', config = {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+  timezone: 'UTC',
+  hour: 'numeric',
+  minute: 'numeric',
+}) => {
+  const date = new Date(mills);
+  return date.toLocaleString(local, config);
 }
