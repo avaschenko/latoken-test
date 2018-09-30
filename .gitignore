@@ -5,6 +5,10 @@
 
 # testing
 /coverage
+
+# production
+/build
+
 .idea
 
 # misc

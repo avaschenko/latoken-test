@@ -28,6 +28,7 @@
     "extract-text-webpack-plugin": "3.0.2",
     "file-loader": "1.1.5",
     "fs-extra": "3.0.1",
+    "gh-pages": "^2.0.0",
     "html-webpack-plugin": "2.29.0",
     "immutable": "^3.8.2",
     "jest": "20.0.4",
@@ -59,7 +60,9 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js --env=jsdom"
+    "test": "node scripts/test.js --env=jsdom",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -b master -d build"
   },
   "devDependencies": {
     "firebase": "^5.5.1"
@@ -103,6 +106,7 @@
       "react-app"
     ]
   },
+  "homepage": "https://aos2006.github.io/latoken-test/",
   "eslintConfig": {
     "extends": "react-app"
   }
