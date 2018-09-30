@@ -5,7 +5,6 @@ class PInput extends Component {
 
   shouldComponentUpdate(nextProps, nextState) {
     const { value } = nextProps;
-    console.log(value);
     return value !== this.props.value;
   }
 
