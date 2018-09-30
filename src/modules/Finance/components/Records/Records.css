@@ -1,0 +1,41 @@
+.table {
+  table-layout: auto;
+  width: 100%;
+}
+
+.td {
+  vertical-align: middle;
+}
+
+.delete {
+  cursor: pointer;
+}
+
+.table tr {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.45);
+}
+
+.table tr:last-child {
+  border-bottom: none;
+}
+
+.table tr td:last-child {
+  text-align: right;
+}
+
+.table tr td:nth-child(3),
+.table tr td:nth-child(4) {
+  text-align: right;
+}
+.balance td {
+  text-align: right;
+}
+
+.label {
+  font-size: 20px;
+}
+
+.noRecords {
+  font-size: 20px;
+  text-align: center;
+}

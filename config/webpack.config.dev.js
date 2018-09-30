@@ -88,6 +88,9 @@ module.exports = {
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
       'react-native': 'react-native-web',
+      'components': path.resolve(__dirname, '../src/components'),
+      'modules': path.resolve(__dirname, '../src/modules'),
+      'src': path.resolve(__dirname, '../src'),
     },
     plugins: [
       // Prevents users from importing files from outside of src/ (or node_modules/).
@@ -144,6 +147,9 @@ module.exports = {
             include: paths.appSrc,
             loader: require.resolve('babel-loader'),
             options: {
+              plugins: [
+                ['import', {libraryName: 'antd', libraryDirectory: 'es', style: 'css'}],
+              ],
 
               // This is a feature of `babel-loader` for webpack (not Babel itself).
               // It enables caching results in ./node_modules/.cache/babel-loader/
@@ -158,6 +164,7 @@ module.exports = {
           // in development "style" loader enables hot editing of CSS.
           {
             test: /\.css$/,
+            exclude: /src/,
             use: [
               require.resolve('style-loader'),
               {
@@ -166,13 +173,20 @@ module.exports = {
                   importLoaders: 1,
                 },
               },
+            ],
+          },
+          {
+            exclude: /node_modules/,
+            test: /\.css$/,
+            use: [
+              require.resolve('style-loader'),
               {
                 loader: require.resolve('css-loader'),
                 options: {
                   importLoaders: 1,
                   modules: true,
                   localIdentName: "[name]__[local]___[hash:base64:5]"
-                }
+                },
               },
               {
                 loader: require.resolve('postcss-loader'),

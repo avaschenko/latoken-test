@@ -1,16 +1,15 @@
 import * as firebase from 'firebase';
 
 let config = {
-  apiKey: "AIzaSyBFGRw8GdLVtQRtla6crz0tYH1rr4X4TlM",
-  authDomain: "test-task-265a3.firebaseapp.com",
-  databaseURL: "https://test-task-265a3.firebaseio.com",
-  projectId: "test-task-265a3",
-  storageBucket: "test-task-265a3.appspot.com",
-  messagingSenderId: "244091379835"
+  apiKey: "AIzaSyADmkvVmoG48Nyh5vUSc4BkV6nTMiabwwA",
+  authDomain: "latoken-test.firebaseapp.com",
+  databaseURL: "https://latoken-test.firebaseio.com",
+  projectId: "latoken-test",
+  storageBucket: "latoken-test.appspot.com",
+  messagingSenderId: "204446833942"
 };
 
-firebase.initializeApp(config);
-firebase.auth();
-let db = firebase.app().database().ref()
+let app = firebase.initializeApp(config);
+let db = app.database();
 
 export default db;

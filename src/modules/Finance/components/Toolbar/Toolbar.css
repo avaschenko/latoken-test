@@ -1,0 +1,16 @@
+.root {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-bottom: 30px;
+}
+
+.label {
+  font-size: 10px;
+  margin-right: 15px;
+}
+
+.relation {
+  margin-left: 15px;
+  margin-right: 15px;
+}

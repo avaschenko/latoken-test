@@ -1,5 +1,24 @@
+
+.select {
+  margin-right: 30px;
+}
+
+.input {
+  width: 10%;
+  margin-right: 30px;
+}
+
+.input:last-of-type {
+  width: 60%;
+  margin-right: 30px;
+}
+
 .root {
   display: flex;
   align-items: center;
   justify-content: flex-start;
+}
+
+.descr {
+  flex-grow: 1;
 }

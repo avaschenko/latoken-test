@@ -1,15 +1,41 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
+import Toolbar from './Toolbar/Toolbar';
+import Records from './Records/Records';
 import CreateForm from './CreateForm/CreateForm';
+import * as actions from '../actions';
 
-class Finance extends Component {
+import s from './Finance.css';
+
+class Finance extends PureComponent {
+
+  handleSubmit = (values) => {
+    for(let i = 0; i < 300; i ++) {
+      this.props.add({
+        ...values,
+        type: values.type.toLowerCase(),
+        date: Date.now(),
+      })
+    }
+  };
 
   render() {
     return (
       <div>
-        <CreateForm />
+        <CreateForm
+          handleSubmit={this.handleSubmit}
+          className={s.form}
+        />
+
+        <Toolbar />
+        <Records />
       </div>
     )
   }
 }
 
-export default Finance;
+export default connect(
+  null,
+  {
+    add: actions.addRecord,
+})(Finance);
